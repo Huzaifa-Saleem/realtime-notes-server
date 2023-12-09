@@ -4,10 +4,10 @@ const socketIo = require("socket.io");
 
 const app = express();
 const server = require("http").createServer(app);
+// allow cors for all origins
 const io = socketIo(server, {
   cors: {
-    origin: "https://realtime-notes-app.vercel.app/",
-    methods: ["GET", "POST"],
+    origin: "*",
   },
 });
 
