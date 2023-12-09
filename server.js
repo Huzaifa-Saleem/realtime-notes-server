@@ -6,7 +6,7 @@ const app = express();
 const server = require("http").createServer(app);
 const io = socketIo(server, {
   cors: {
-    origin: "http://localhost:3000",
+    origin: "https://realtime-notes-app.vercel.app/",
     methods: ["GET", "POST"],
   },
 });
@@ -14,6 +14,10 @@ const io = socketIo(server, {
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+app.get("/", (req, res) => {
+  res.send("Hello world");
+});
 
 io.on("connection", (socket) => {
   let id = null;
